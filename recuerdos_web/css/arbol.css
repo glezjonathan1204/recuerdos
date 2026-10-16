@@ -1,0 +1,413 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@500;600;700&display=swap');
+
+:root {
+  --fondo: #f8f0ec;
+  --tinta: #38283a;
+  --rosa: #a85f7c;
+  --papel: #fffaf7;
+  
+  --verde-hoja: #b7c5a7;
+  --verde-sombra: #9cae8a;
+  --verde-borde: #d2d9c1;
+  --verde-pasto: #c5d0b6;
+  
+  --madera: #8b6654;
+  --madera-sombra: #735140;
+  --madera-borde: #67483d;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--fondo);
+  color: var(--tinta);
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+}
+
+.encabezado {
+  text-align: center;
+  padding: 52px 20px 25px;
+  max-width: 780px;
+  margin: auto;
+  position: relative;
+  z-index: 10;
+}
+
+.volver {
+  position: absolute;
+  left: 22px;
+  top: 24px;
+  text-decoration: none;
+  color: var(--rosa);
+  font-weight: 700;
+}
+
+.mini {
+  letter-spacing: .2em;
+  font-size: .7rem;
+  color: var(--rosa);
+  font-weight: 700;
+}
+
+.encabezado h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 6vw, 4rem);
+  margin: 12px 0;
+  color: var(--tinta);
+}
+
+.intro {
+  line-height: 1.7;
+  color: #756675;
+  max-width: 580px;
+  margin: 0 auto;
+}
+
+.bosque {
+  position: relative;
+  width: 100%;
+  max-width: 1400px; /* Más ancho para el árbol frondoso */
+  margin: 0 auto;
+  min-height: 2500px; 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 80px 20px 100px;
+  isolation: isolate;
+}
+
+.arbol {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  overflow: hidden;
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.tronco {
+  position: absolute;
+  width: 110px;
+  height: 80%;
+  left: 50%;
+  bottom: 8%;
+  transform: translateX(-50%);
+  background: var(--madera);
+  border-left: 6px solid var(--madera-borde);
+  border-right: 6px solid var(--madera-borde);
+  box-shadow: inset -15px 0 0 var(--madera-sombra);
+  z-index: 2;
+}
+
+.tronco::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 20px,
+    var(--madera-borde) 20px,
+    var(--madera-borde) 24px
+  );
+  opacity: 0.15;
+}
+
+.savia {
+  position: absolute;
+  width: 6px;
+  height: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(to top, transparent, #eec1d1, transparent);
+  opacity: 0;
+  animation: latidoSavia 4s infinite ease-in-out;
+}
+
+@keyframes latidoSavia {
+  0% { transform: translate(-50%, 100%); opacity: 0; }
+  50% { opacity: 0.8; }
+  100% { transform: translate(-50%, -100%); opacity: 0; }
+}
+
+/* Ramas empujadas súper a los costados */
+.rama {
+  position: absolute;
+  background: var(--madera);
+  border: 6px solid var(--madera-borde);
+  z-index: 1;
+}
+
+.rama-1 { width: 55px; height: 500px; left: calc(50% - 250px); top: 250px; transform: rotate(-70deg); box-shadow: inset -10px 0 0 var(--madera-sombra); }
+.rama-2 { width: 50px; height: 480px; right: calc(50% - 240px); top: 300px; transform: rotate(65deg); box-shadow: inset 10px 0 0 var(--madera-sombra); }
+.rama-3 { width: 45px; height: 350px; left: calc(50% - 200px); top: 450px; transform: rotate(-80deg); }
+.rama-4 { width: 45px; height: 300px; right: calc(50% - 180px); top: 480px; transform: rotate(75deg); }
+
+/* Hojas - Distribuidas para hacer una nube gigante y ancha */
+.copa {
+  position: absolute;
+  background: var(--verde-hoja);
+  border: 7px solid var(--verde-borde);
+  border-radius: 50%;
+  box-shadow: inset -15px -25px 0 var(--verde-sombra);
+  z-index: 3;
+}
+
+.copa-1 { width: 600px; height: 600px; left: 50%; transform: translateX(-50%); top: -30px; } 
+.copa-2 { width: 500px; height: 500px; left: calc(50% - 480px); top: 80px; } 
+.copa-3 { width: 520px; height: 520px; right: calc(50% - 500px); top: 50px; } 
+.copa-4 { width: 450px; height: 450px; left: calc(50% - 650px); top: 350px; } /* Extremo Izq */
+.copa-5 { width: 480px; height: 480px; right: calc(50% - 650px); top: 320px; } /* Extremo Der */
+.copa-6 { width: 420px; height: 420px; left: calc(50% - 450px); top: 600px; } 
+.copa-7 { width: 400px; height: 400px; right: calc(50% - 450px); top: 580px; } 
+.copa-8 { width: 600px; height: 600px; left: 50%; transform: translateX(-50%); top: 350px; z-index: 2;} 
+.copa-9 { width: 350px; height: 350px; left: calc(50% - 250px); top: 850px; } 
+.copa-10 { width: 360px; height: 360px; right: calc(50% - 250px); top: 880px; } 
+.copa-11 { width: 300px; height: 300px; left: calc(50% - 550px); top: 150px; } 
+.copa-12 { width: 320px; height: 320px; right: calc(50% - 580px); top: 180px; } 
+.copa-13 { width: 500px; height: 500px; left: 50%; transform: translateX(-50%); top: 750px; } 
+.copa-14 { width: 250px; height: 250px; left: calc(50% - 300px); top: 500px; } 
+
+/* Base y Raíces */
+.base-pasto {
+  position: absolute;
+  width: 500px;
+  height: 120px;
+  background: var(--verde-pasto);
+  border: 6px solid var(--verde-borde);
+  border-radius: 50%;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.raiz {
+  position: absolute;
+  background: var(--madera);
+  border: 6px solid var(--madera-borde);
+  border-radius: 40% 40% 10% 10%;
+  bottom: 8%;
+  z-index: 2;
+}
+
+.raiz-1 { width: 120px; height: 80px; left: calc(50% - 140px); transform: rotate(35deg); border-top: none; }
+.raiz-2 { width: 140px; height: 90px; right: calc(50% - 150px); transform: rotate(-30deg); border-top: none; }
+.raiz-3 { width: 80px; height: 100px; left: calc(50% - 60px); transform: rotate(15deg); border-top: none; }
+.raiz-4 { width: 90px; height: 110px; right: calc(50% - 50px); transform: rotate(-10deg); border-top: none; }
+
+/* --- ZONA COPA Y FILAS (Para hacer el efecto curvo) --- */
+.zona-copa {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  width: 100%;
+  z-index: 10;
+  position: relative;
+}
+
+.fila-fotos {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 35px;
+  width: 100%;
+}
+
+.zona-raices {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 35px;
+  max-width: 1000px;
+  margin: 0 auto;
+  z-index: 10;
+  margin-top: 50px;
+}
+
+.conector-texto {
+    color: #000000;
+  text-align: center;
+  padding: 100px 20px 80px;
+  margin: auto 0;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-style: italic;
+  max-width: 500px;
+  align-self: center;
+  z-index: 5;
+}
+
+/* --- TARJETAS --- */
+.recuerdo {
+  width: min(100%, 280px); /* Un poquito más delgadas para que quepan 4 */
+  padding: 12px;
+  background: #fffaf7eF;
+  border: 1px solid #e8d7d8;
+  border-radius: 12px;
+  box-shadow: 0 12px 35px #59404a1c;
+  transition: transform 0.3s;
+}
+
+.recuerdo:hover {
+  transform: translateY(-5px) scale(1.03) !important;
+  z-index: 15;
+}
+
+.recuerdo-izq { transform: rotate(-3deg); }
+.recuerdo-der { transform: rotate(3deg); margin-top: 20px; }
+.recuerdo-centro { transform: rotate(1deg); margin-top: -10px; }
+
+.foto {
+  height: 200px;
+  position: relative;
+  background: linear-gradient(135deg, #e6d9dc, #d3dfcf);
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+}
+
+/* Soporte para que los videos se ajusten igual que las fotos */
+.foto img, .foto video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  position: absolute;
+  inset: 0;
+}
+
+/* --- ESTILOS DEL CARRUSEL --- */
+.foto.carrusel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+}
+
+.foto.carrusel::-webkit-scrollbar {
+  height: 6px;
+}
+
+.foto.carrusel::-webkit-scrollbar-thumb {
+  background: var(--rosa);
+  border-radius: 4px;
+}
+
+.foto.carrusel img {
+  position: relative; /* Sobreescribe la posición absoluta para que funcione en línea */
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+}
+
+.marcador-foto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-size: 2.5rem;
+  color: var(--rosa);
+}
+
+.marcador-foto small {
+  font-size: .7rem;
+  letter-spacing: .2em;
+  margin-top: 5px;
+}
+
+.contexto {
+  min-height: 52px;
+  margin: 12px 4px 3px;
+  padding: 5px;
+  color: #6b5362;
+  font-size: .88rem;
+  line-height: 1.55;
+  outline: none;
+  border-bottom: 1px dashed #d7b9c7;
+}
+
+.contexto:focus {
+  background: #fff2f7;
+  border-radius: 4px;
+}
+
+/* Celulares */
+@media(max-width: 900px) {
+  .volver {
+    position: static;
+    display: inline-block;
+    margin-bottom: 20px;
+  }
+  
+  .bosque {
+    min-height: auto;
+    padding: 30px 15px;
+  }
+  
+  .arbol {
+    opacity: 0.4;
+  }
+  
+  .tronco {
+    height: 95%;
+    width: 60px;
+  }
+  
+  .copa { width: 280px; height: 280px; border-width: 5px; }
+  .copa-1 { left: 50%; width: 350px; height: 350px; }
+  .copa-2 { left: calc(50% - 150px); top: 150px; }
+  .copa-3 { right: calc(50% - 150px); top: 200px; }
+  .copa-8 { left: 50%; top: 400px; }
+  .copa-11 { left: 50%; top: 800px; }
+  .copa-13 { left: 50%; top: 1200px; }
+  
+  .copa-4, .copa-5, .copa-6, .copa-7, .copa-9, .copa-10, .copa-12, .copa-14 { display: none; }
+  
+  .rama { display: none; }
+  .base-pasto { width: 300px; height: 80px; }
+  
+  .recuerdo {
+    width: 100%;
+    max-width: 340px;
+    margin: 0 0 25px 0 !important;
+    transform: rotate(0) !important;
+  }
+}
+
+footer {
+  text-align: center;
+  padding: 40px 20px 80px;
+  background: #eee2e4;
+  position: relative;
+  z-index: 10;
+}
+
+footer p {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+}
+
+.boton {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 14px 23px;
+  border-radius: 999px;
+  background: var(--rosa);
+  color: white;
+  text-decoration: none;
+  font-weight: 700;
+  transition: .2s;
+}
+
+.boton:hover {
+  transform: translateY(-2px);
+  background: #88455f;
+}
+
