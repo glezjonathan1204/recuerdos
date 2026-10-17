@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@500;600;700&display=swap');
+
+:root {
+  --fondo: #170f1c;
+  --rosa: #f0b9cb;
+  --crema: #fff3e9;
+  --texto: #f9eaf0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'DM Sans', sans-serif;
+  background: var(--fondo);
+  color: var(--texto);
+}
+
+.portada {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 28px;
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 50% 20%, #54304f 0%, #27172d 40%, #120d18 100%);
+}
+
+.tarjeta {
+  position: relative;
+  z-index: 1;
+  width: min(720px, 100%);
+  padding: clamp(32px, 7vw, 72px) clamp(24px, 7vw, 70px);
+  text-align: center;
+  border: 1px solid #f0b9cb55;
+  border-radius: 28px;
+  background: #211522c9;
+  box-shadow: 0 25px 90px #0006;
+  backdrop-filter: blur(8px);
+}
+
+.etiqueta {
+  font-size: .72rem;
+  letter-spacing: .22em;
+  color: var(--rosa);
+  font-weight: 700;
+}
+
+.tarjeta h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.4rem, 7vw, 4.8rem);
+  line-height: 1.08;
+  margin: 24px 0;
+  color: var(--crema);
+  font-weight: 600;
+}
+
+.subtitulo {
+  max-width: 450px;
+  margin: 0 auto;
+  color: #e4cbd8;
+  line-height: 1.8;
+  font-size: 1.03rem;
+}
+
+.boton {
+  display: inline-flex;
+  gap: 14px;
+  align-items: center;
+  margin-top: 34px;
+  padding: 15px 28px;
+  border-radius: 999px;
+  background: var(--rosa);
+  color: #2a1425;
+  text-decoration: none;
+  font-weight: 700;
+  transition: transform .2s, box-shadow .2s;
+}
+
+.boton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px #f0b9cb33;
+}
+
+.nota {
+  font-size: .8rem;
+  color: #bda4b7;
+  margin-top: 28px;
+}
+
+.brillo {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(2px);
+  background: #e9a9c51c;
+}
+
+.brillo-uno {
+  width: 350px;
+  height: 350px;
+  top: -100px;
+  left: -80px;
+}
+
+.brillo-dos {
+  width: 450px;
+  height: 450px;
+  right: -180px;
+  bottom: -180px;
+}
+
+.decor {
+  position: absolute;
+  color: #f0b9cb66;
+  font-size: 2rem;
+}
+
+.decor-uno {
+  top: 12%;
+  right: 15%;
+}
+
+.decor-dos {
+  bottom: 13%;
+  left: 14%;
+}
+
+.decor-tres {
+  bottom: 20%;
+  right: 10%;
+}
